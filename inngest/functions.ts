@@ -18,6 +18,11 @@ export const execute = inngest.createFunction(
       system: "You are a helpful assistant that writes short stories.",
       prompt: `What is 2+2? Write a short story about it.`,
       model: google("gemini-2.5-flash"),
+      experimental_telemetry: {
+        isEnabled: true,
+        recordInputs: true,
+        recordOutputs: true,
+      }
     });
 
     const { steps: openaiSteps } = await step.ai.wrap("openai-generate-text", generateText, {
